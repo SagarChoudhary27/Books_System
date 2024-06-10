@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-4">
+    <div class="col-8 offset-2">
+        <h3>Edit New Book</h3>
+    <form method="post" action="/books/<%=book._id%>?_method=put">
+        
+        <div class="mb-3">
+            <lable for="title" class="form-label">Title</lable>
+            <input name="book[title]" value="<%=book.title%>" type="text" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <lable for="description" class="form-label">Description</lable>
+            <textarea name="book[description]" required type="text" class="form-control"><%=book.description%></textarea>
+        </div>
+        
+        <div class="mb-3">
+            <lable for="pdf" class="form-label" >Upload Book PDF</lable>
+            <input name="book[pdf]" required value="<%=book.pdf.url%>" type="file" class="form-control">
+        </div>
+        
+        <button class="btn btn-dark mt-3">Edit</button>
+    </form>
+    </div>
+</div>

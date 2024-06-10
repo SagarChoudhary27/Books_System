@@ -1,0 +1,45 @@
+<% layout("/layouts/boilerplate") %>
+
+    <div class="row mt-4">
+        <div class="col-8 offset-2 mb-3">
+            <h3>Books Details: </h3>
+        </div>
+
+        <div class="card col-8 offset-2">
+            <div class="card btns">
+
+                <div class="card-body">
+                    <p class="card-text">
+                        Title :- <b><%= book.title %></b>
+                    </p>
+                    <p class="card-text">
+                        Description :- <%= book.description %>
+                    </p>
+
+                    <p class="card-text">
+                        Created by :- <%= book.owner.username %>
+                    </p>
+                    <br>
+                    
+                </div>
+
+                <% if( currUser && currUser._id.equals(book.owner._id)) { %>
+                <div class="btns"> 
+
+                    <form method="get" action="/books/<%=book._id%>/edit">
+                        <button class="btn btn-primary btn-spl offset-1" >Edit this book</button>
+                    </form>
+                
+                    <form method="post" action="/books/<%=book._id%>?_method=delete">
+                        <button type="submit" class="btn btn-danger btn-spl offset-3" >Delete this book</button>
+                    </form>
+                </div>
+                <% } %>
+
+            </div>
+        </div>
+
+        <div class="col-8 offset-2">
+                <object class="pdf" data="<%=book.pdf.url%>" width="800" height="500"></object>
+        </div>
+    </div>

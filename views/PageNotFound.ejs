@@ -1,0 +1,41 @@
+<% layout("/layouts/boilerplate") %>
+
+
+<style>
+    .outside{
+        border-radius: 2rem;
+        width: 15rem;
+        background-color: chocolate;
+        align-items: center;
+        padding: 1rem;
+    }
+    .inside{
+        color: white;
+        text-decoration: none;
+    }
+    .img-page{
+        width: 50%;
+        height: 50%;
+        object-fit: cover;
+        margin-left: 0;
+    }
+    .page-not{
+        text-align: center;
+        
+    }
+    .center-div{
+        text-align: center;
+        display: inline-block;
+    }
+</style>
+
+<div class="center-div col-8 offset-2 mt-5 mb-5">
+    <img src="https://res.cloudinary.com/dzzolb0f7/image/upload/fl_preserve_transparency/v1717929597/404-error_g28b1e.jpg?_s=public-apps" class="img-page offset-3">
+    <h2 class="mt-5 mb-3 page-not"><%=message%></h2>
+    <br>
+    <div class="center-div">
+        <div class="outside">
+            <a href="/books" class="inside">Go To Homepage</a>
+        </div>
+    </div>
+</div>
