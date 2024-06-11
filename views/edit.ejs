@@ -3,7 +3,7 @@
 <div class="row mt-4">
     <div class="col-8 offset-2">
         <h3>Edit New Book</h3>
-    <form method="post" action="/books/<%=book._id%>?_method=put">
+    <form method="post" action="/books/<%=book._id%>?_method=put" enctype="multipart/form-data" novalidate class="needs-validation">
         
         <div class="mb-3">
             <lable for="title" class="form-label">Title</lable>
@@ -17,7 +17,7 @@
         
         <div class="mb-3">
             <lable for="pdf" class="form-label" >Upload Book PDF</lable>
-            <input name="book[pdf]" required value="<%=book.pdf.url%>" type="file" class="form-control">
+            <input name="book[pdf]" required type="file" class="form-control">
         </div>
         
         <button class="btn btn-dark mt-3">Edit</button>
