@@ -212,7 +212,14 @@ app.get("/books/:id/edit", isLoggedIn ,isOwner, wrapAsync(async(req, res)=>{
 //update route
 app.put("/books/:id", isLoggedIn ,isOwner, upload.single("book[pdf]"), validateBook, wrapAsync(async (req, res)=>{
     let {id} = req.params;
-    await Book.findByIdAndUpdate(id, {...req.body.book});
+    let book = await Book.findByIdAndUpdate(id, {...req.body.book});
+    if(typeof req.file !== "undefined"){
+        let url = req.file.path;
+        let filename = req.file.filename;
+        book.pdf = {url, filename};
+        await book.save();
+    }
+    
     res.redirect(`/books/${id}`);
 }));
 
